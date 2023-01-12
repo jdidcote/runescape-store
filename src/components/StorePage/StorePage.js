@@ -8,7 +8,7 @@ function StorePage(props) {
   useEffect(() => {
     fetch("http://0.0.0.0:8000/items/list")
       .then((res) => res.json())
-      .then((data) => setItemIds(data["itemId"].slice(0, 3)));
+      .then((data) => setItemIds(data["itemId"]));
   }, []);
 
   if (!itemIds) {
@@ -21,7 +21,9 @@ function StorePage(props) {
   return (
     <div>
       <Navbar></Navbar>
-      {itemCards}
+      <div className="flex flex-wrap justify-center w-3/5 m-auto">
+        {itemCards}
+      </div>
     </div>
   );
 }

@@ -1,9 +1,11 @@
+from pathlib import Path
 import json
-
-import requests
+import warnings
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+
+ROOT_DIR = Path(__file__).parent.parent
 
 app = FastAPI()
 
@@ -30,6 +32,9 @@ async def get_item_list():
 
 @app.post("/items/data")
 async def get_item(item_id):
-    data = requests.get("https://secure.runescape.com/m=itemdb_oldschool/api/catalogue/detail.json?item=" + str(item_id))
-    print(data.json())
-    return data.json()
+    try:
+        with open(ROOT_DIR / f"data/{item_id}.json") as f:
+            data = json.load(f)
+            return data
+    except FileNotFoundError:
+        warnings.warn(f"Item ID {item_id} data not been cached locally")
