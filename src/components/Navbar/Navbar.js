@@ -2,7 +2,7 @@ import React from "react";
 
 function Navbar() {
   return (
-    <div className="flex w-full bg-black h-16 justify-between items-center">
+    <div className="flex w-full bg-black h-16 justify-between items-center fixed">
       <div className="ml-12">
         <a href="/store" className="text-white text-3xl">
           Runestore

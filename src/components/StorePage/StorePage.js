@@ -21,7 +21,7 @@ function StorePage(props) {
   return (
     <div>
       <Navbar></Navbar>
-      <div className="flex flex-wrap justify-center w-3/5 m-auto">
+      <div className="flex flex-wrap justify-center w-3/5 m-auto pt-[72px]">
         {itemCards}
       </div>
     </div>
