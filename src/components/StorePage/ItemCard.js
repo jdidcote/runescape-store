@@ -1,9 +1,17 @@
 import React, { useEffect, useState } from "react";
 
 const parseItemPrice = (price) => {
-  const multiplier = price[price.length - 1] == "b" ? 1e9 : 1e6;
+  const multiplierMap = {
+    m: 1e6,
+    k: 1e3,
+    b: 1e9,
+  };
 
-  const parsedPrice = price.trim().replace("m", "").replace("b", "");
+  let parsedPrice = price.trim();
+
+  const multiplier = multiplierMap[parsedPrice[parsedPrice.length - 1]];
+
+  parsedPrice = parsedPrice.slice(0, -1);
 
   return Math.round(Number(parsedPrice) * multiplier);
 };
