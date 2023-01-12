@@ -5,7 +5,7 @@ const parseItemPrice = (price) => {
 
   const parsedPrice = price.trim().replace("m", "").replace("b", "");
 
-  return Number(parsedPrice) * multiplier;
+  return Math.round(Number(parsedPrice) * multiplier);
 };
 
 export default function ItemCard({ itemId }) {
@@ -36,7 +36,8 @@ export default function ItemCard({ itemId }) {
       <div className="flex flex-col flex-grow justify-between text-center">
         <h3 className="font-bold">{itemData["name"]}</h3>
         <p className="mb-2">
-          {parseItemPrice(itemData["current"]["price"])} gp
+          {parseItemPrice(itemData["current"]["price"]).toLocaleString("en-US")}{" "}
+          gp
         </p>
       </div>
     </a>
