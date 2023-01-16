@@ -16,7 +16,7 @@ const parseItemPrice = (price) => {
   return Math.round(Number(parsedPrice) * multiplier);
 };
 
-export default function ItemCard({ itemId }) {
+export default function ItemCard({ itemId, setPopupItemData }) {
   const [itemData, setItemData] = useState(null);
 
   useEffect(() => {
@@ -33,10 +33,9 @@ export default function ItemCard({ itemId }) {
 
   return (
     <a
-      href="#"
-      className="w-48 h-48 my-2 mx-4 border-2 
-    border-slate-400 rounded-md flex flex-col p-2
-    hover:bg-slate-100"
+      href="#/"
+      className="w-48 h-48 my-2 mx-4 border-2 border-slate-400 rounded-md flex flex-col p-2 hover:bg-slate-100"
+      onClick={() => setPopupItemData(itemData)}
     >
       <div className="flex justify-start w-1/2 mx-auto">
         <img src={itemData["icon_large"]} />
