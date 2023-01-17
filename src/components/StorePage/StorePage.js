@@ -3,7 +3,7 @@ import Navbar from "../Navbar/Navbar";
 import ItemCard from "./ItemCard";
 import ItemPopup from "./ItemPopup";
 
-function StorePage(props) {
+function StorePage({ basketItems, setBasketItems }) {
   const [itemIds, setItemIds] = useState(null);
   const [popupItemData, setPopupItemData] = useState(null);
 
@@ -36,7 +36,12 @@ function StorePage(props) {
   return (
     <div className="flex flex-col">
       <Navbar></Navbar>
-      <ItemPopup itemData={popupItemData} />
+      <ItemPopup
+        itemData={popupItemData}
+        setPopupItemData={setPopupItemData}
+        basketItems={basketItems}
+        setBasketItems={setBasketItems}
+      />
       <div className={getItemStyle()}>{itemCards}</div>
     </div>
   );

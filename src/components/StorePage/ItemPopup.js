@@ -1,6 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 
-export default function ItemPopup({ itemData }) {
+export default function ItemPopup({
+  itemData,
+  setPopupItemData,
+  basketItems,
+  setBasketItems,
+}) {
+  const [quantity, setQuantity] = useState(1);
+
   if (!itemData) {
     return;
   }
@@ -23,14 +30,30 @@ export default function ItemPopup({ itemData }) {
         <input
           type="number"
           min="1"
-          className="border-2 w-12 mx-2 rounded-lg"
+          className="border-2 w-12 mx-2 rounded-lg pl-2"
+          value={quantity}
+          onChange={(e) => setQuantity(e.target.value)}
         ></input>
       </div>
       <div className="mb-2 flex justify-center mx-6 flex-wrap">
-        <button className="border-2 border-black px-2 rounded-lg bg-red-200 shadow-lg mx-4 my-1">
+        <button
+          className="border-2 border-black px-2 rounded-lg bg-red-200 shadow-lg mx-4 my-1"
+          onClick={() => {
+            setPopupItemData(null);
+          }}
+        >
           Close
         </button>
-        <button className="border-2 border-black px-2 rounded-lg bg-green-200 shadow-lg mx-4 my-1">
+        <button
+          className="border-2 border-black px-2 rounded-lg bg-green-200 shadow-lg mx-4 my-1"
+          onClick={() => {
+            let newItem = {};
+            setBasketItems((items) => {
+              items[itemData["id"]] = quantity;
+              return items;
+            });
+          }}
+        >
           Add
         </button>
       </div>
