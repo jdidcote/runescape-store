@@ -26,7 +26,7 @@ function StorePage({ basketItems, setBasketItems }) {
 
   const getItemStyle = () => {
     let style =
-      "flex flex-wrap justify-center w-3/5 m-auto pt-16 overflow-y-scroll  ";
+      "flex flex-wrap justify-center m-auto mt-16 mx-32 overflow-y-scroll h-[90vh] ";
     if (popupItemData) {
       style += "blur-sm";
     }
@@ -35,10 +35,15 @@ function StorePage({ basketItems, setBasketItems }) {
 
   return (
     <div className="flex flex-col">
-      <Navbar></Navbar>
+      <Navbar
+        basketItems={basketItems}
+        setBasketItems={setBasketItems}
+      ></Navbar>
+
       <ItemPopup
         itemData={popupItemData}
         setPopupItemData={setPopupItemData}
+        s
         basketItems={basketItems}
         setBasketItems={setBasketItems}
       />

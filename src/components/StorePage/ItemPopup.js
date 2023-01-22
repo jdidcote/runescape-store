@@ -13,7 +13,7 @@ export default function ItemPopup({
   }
   return (
     <div
-      className="w-1/3 h-auto border-2 border-black rounded-md fixed left-0 right-0 m-auto 
+      className="w-1/3 max-w-lg h-auto border-2 border-black rounded-md fixed left-0 right-0 m-auto 
                  mt-48 bg-white flex flex-col z-10"
     >
       <div className="mx-auto mt-4 text-xl font-bold px-4">
@@ -50,6 +50,7 @@ export default function ItemPopup({
             let newItem = {};
             setBasketItems((items) => {
               items[itemData["id"]] = quantity;
+              setPopupItemData(null);
               return items;
             });
           }}
